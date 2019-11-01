@@ -1,27 +1,28 @@
 package com.example.clothshop.Businesslogic
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import com.example.clothshop.MainActivity
+import com.example.clothshop.ui.Login.LoginActivity
 
 abstract class  ControllerBase
 {
-    private lateinit var mainActivity : MainActivity;
+    private lateinit var loginactivity : LoginActivity;
     protected var dialog: AlertDialog? = null
 
-    fun setMainActivity(mainActivity: MainActivity){
-        this.mainActivity = mainActivity;
+    fun setActivity(loginactivity: LoginActivity){
+        this.loginactivity = loginactivity;
     }
 
-    fun getMainActivity() : MainActivity?
+    fun getLoginActivity() : LoginActivity?
     {
-        return this.mainActivity;
+        return this.loginactivity;
     }
 
     fun MessageBox(uzenetSzoveg: String) {
-        Toast.makeText(getMainActivity()!!.getApplicationContext(), uzenetSzoveg, Toast.LENGTH_LONG)
+        Toast.makeText(getLoginActivity()!!.getApplicationContext(), uzenetSzoveg, Toast.LENGTH_LONG)
             .show()
     }
 

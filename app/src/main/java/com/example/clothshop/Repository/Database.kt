@@ -31,7 +31,7 @@ open abstract class Database
     protected fun getResultSetHelper(): ResultSet? {
         return this.resultSetHelper
     }
-   protected open fun dispose() {
+   protected fun dispose() {
 
         try {
             resultSet!!.close()

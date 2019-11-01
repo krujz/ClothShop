@@ -2,19 +2,16 @@ package com.example.clothshop.Repository
 
 import java.lang.Exception
 
-class DataBaseQuerry : Database() {
+class DataBaseQuerry(): Database() {
 
     companion object
     {
-        private var instance : DataBaseQuerry? = null;
-        fun getInstance() : DataBaseQuerry?
-        {
-            if ( instance == null)
-            {
-                instance = DataBaseQuerry();
+        @Volatile private var instance : DataBaseQuerry? = null;
+
+         fun getInstance() =
+            instance ?: synchronized(this) {
+                instance ?: DataBaseQuerry().also { instance = it }
             }
-            return instance;
-        }
     }
 
     fun getData() : String

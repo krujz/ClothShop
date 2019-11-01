@@ -28,21 +28,24 @@ class ControllerMain : ControllerBase()
 
     override fun serverStatusWriter() {
 
+
         if (SQLConnection.getServerStatus() === ServerState.Online) {
 
-            getMainActivity()!!.textViewConnection!!.text = SQLConnection.getServerStatus().toString()
-            getMainActivity()!!.textViewConnection!!.setTextColor(SQLConnection.getServerStatus().toColor())
+            getLoginActivity()!!.LoginServerState!!.text = SQLConnection.getServerStatus().toString()
+            getLoginActivity()!!.LoginServerState!!.setTextColor(SQLConnection.getServerStatus().toColor())
             //fillDevelopmentState()
         } else {
-            getMainActivity()!!.textViewConnection!!.text = SQLConnection.getServerStatus().toString()
-            getMainActivity()!!.textViewConnection!!.setTextColor(SQLConnection.getServerStatus().toColor())
+            getLoginActivity()!!.LoginServerState!!.text = SQLConnection.getServerStatus().toString()
+            getLoginActivity()!!.LoginServerState!!.setTextColor(SQLConnection.getServerStatus().toColor())
         }
+
+
 
     }
 
     fun Starting() {
         val wifiManager =
-            getMainActivity()!!.getApplicationContext().getSystemService(Context.WIFI_SERVICE) as WifiManager
+            getLoginActivity()!!.getApplicationContext().getSystemService(Context.WIFI_SERVICE) as WifiManager
         wifiManager.isWifiEnabled = true
         connectSQL()
         serverStatusWriter()
@@ -50,7 +53,7 @@ class ControllerMain : ControllerBase()
 
     fun connectSQL(): Boolean {
         val wifiManager =
-            getMainActivity()!!.getApplicationContext().getSystemService(Context.WIFI_SERVICE) as WifiManager
+            getLoginActivity()!!.getApplicationContext().getSystemService(Context.WIFI_SERVICE) as WifiManager
         wifiManager.isWifiEnabled = true
         return if (!SQLConnection.getServerStatus().equals(ServerState.Online)) {
             SQLConnection.ConnectToServer()

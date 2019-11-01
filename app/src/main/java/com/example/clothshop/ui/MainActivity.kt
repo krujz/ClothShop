@@ -1,4 +1,4 @@
-package com.example.clothshop
+package com.example.clothshop.ui
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.widget.TextView
 import com.example.clothshop.Businesslogic.ControllerMain
+import com.example.clothshop.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,16 +38,17 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
 
-        textViewConnection = findViewById(R.id.textViewConnection)
-        controllerMain = ControllerMain.getInstace();
-        controllerMain!!.setMainActivity(this);
-        controllerMain!!.Starting();
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        //textViewConnection = findViewById(R.id.textViewConnection)
+
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_slideshow,
+                R.id.nav_tools,
+                R.id.nav_share,
+                R.id.nav_send
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -54,7 +56,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
