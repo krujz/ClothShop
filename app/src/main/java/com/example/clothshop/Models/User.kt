@@ -1,15 +1,22 @@
 package com.example.clothshop.Models
 
-class User(username : String?, email: String?)
+class User()
 {
+
+    companion object
+    {
+        private var instace : User? = null
+        fun getInstace() : User?
+        {
+            if (instace == null)
+            {
+                instace = User()
+            }
+            return instace;
+        }
+    }
     private var username :String? = null
     private var email :String? = null
-
-    init
-    {
-        this.username = username;
-        this.email = email;
-    }
 
     fun setUsername(username: String?){ this.username = username;}
     fun setEmail(email: String?){ this.email = email;}

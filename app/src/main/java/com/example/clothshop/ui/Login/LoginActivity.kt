@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import com.example.clothshop.Businesslogic.ControllerLogin
+import com.example.clothshop.Models.User
 import com.example.clothshop.ui.MainActivity
 import com.example.clothshop.ui.Registration.RegistrationActivity
 
@@ -32,7 +33,7 @@ class LoginActivity: AppCompatActivity()
           if(controllerLogin!!.IsLoginPassed(editTextUsername!!.text.toString(),editTextPassword!!.text.toString()))
             {
                 controllerLogin!!.activityStarter(this,MainActivity::class.java)
-                controllerLogin!!.MessageBox("Sikeres bejelentkezés")
+                controllerLogin!!.MessageBox( "Üdvözöllek " + User.getInstace()!!.getUsername())
             }
             else
             {

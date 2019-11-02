@@ -9,7 +9,7 @@ class LoginRepository() : Database()
         try {
 
             querry =
-                "SELECT username,password FROM [dbo].[Users] WHERE username LIKE '$username' AND password LIKE '$password'";
+                "SELECT username,password,email FROM [dbo].[Users] WHERE username LIKE '$username' AND password LIKE '$password'";
             runDatabaseQuerry(querry!!)
 
             return getResultSet()

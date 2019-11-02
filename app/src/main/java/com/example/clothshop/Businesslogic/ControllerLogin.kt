@@ -2,22 +2,23 @@ package com.example.clothshop.Businesslogic
 
 import android.content.Context
 import android.net.wifi.WifiManager
+import com.example.clothshop.Models.User
 import com.example.clothshop.Repository.DataBaseQuerry
 import com.example.clothshop.Repository.Enums.ServerState
 import com.example.clothshop.Repository.LoginRepository
 import com.example.clothshop.Repository.SQLConnection
 import com.example.clothshop.ui.Login.LoginActivity
-import com.example.clothshop.ui.Registration.RegistrationActivity
 import java.lang.Exception
-import kotlin.math.log
 
 class ControllerLogin(loginRepository : LoginRepository) : ControllerBase()
 {
     private var loginRepository : LoginRepository? = null;
 
+
     init
     {
         this.loginRepository = loginRepository;
+
     }
 
     companion object
@@ -77,9 +78,17 @@ class ControllerLogin(loginRepository : LoginRepository) : ControllerBase()
     {
         try {
             var loginResultSet = loginRepository!!.IsLoginPassed(username,password)
+
+
             loginResultSet!!.next()
-            return (loginResultSet!!.getString("username").equals(username)  &&
-                    loginResultSet!!.getString("password").equals(password) )
+            if (loginResultSet!!.getString("username").equals(username) &&
+                loginResultSet!!.getString("password").equals(password) )
+            {
+                User.getInstace()!!.setUsername(loginResultSet!!.getString("username"))
+
+                return true
+            }
+            return false
         }
         catch (e : Exception)
         {
