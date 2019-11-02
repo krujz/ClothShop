@@ -22,7 +22,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_background"
             android:scaleType="fitCenter"
-            android:src="@drawable/code_android_logo" />
+            android:src="@drawable/logo_transparent" />
 
 
         <EditText

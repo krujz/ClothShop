@@ -2,8 +2,8 @@
     <string name="app_name">ClothShop</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Krujz Gergely</string>
+    <string name="nav_header_subtitle">krujzg97@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -15,5 +15,6 @@
     <string name="menu_send">Send</string>
     <string name="activity_login">Login</string>
     <string name="activity_registration">Registration</string>
-    <string name="registrate">Registrate</string>
+    <string name="registrate">Sign up</string>
+
 </resources>
