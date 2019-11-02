@@ -1,26 +1,20 @@
 package com.example.clothshop.Repository
 
+import java.sql.ResultSet
+
 class LoginRepository() : Database()
 {
 
-    fun IsLoginPassed(username : String, password : String): Boolean {
+    fun IsLoginPassed(username : String, password : String): ResultSet? {
         try {
 
             querry =
                 "SELECT username,password FROM [dbo].[Users] WHERE username LIKE '$username' AND password LIKE '$password'";
             runDatabaseQuerry(querry!!)
-            getResultSet()!!.next();
-            if (!getResultSet()!!.getString("username").equals(username)  &&
-                !getResultSet()!!.getString("password").equals(password) )
-            {
-                return false;
-            }
 
-            return true
+            return getResultSet()
         } catch (ex: Exception) {
-            return false
-        } finally {
-            dispose()
+            throw java.lang.Exception("Hiba az adatbázissal való kapcsolódás során")
         }
     }
 

@@ -14,12 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.widget.TextView
-import com.example.clothshop.Businesslogic.ControllerMain
+import com.example.clothshop.Businesslogic.ControllerLogin
 import com.example.clothshop.R
 
 class MainActivity : AppCompatActivity() {
 
-    private var controllerMain: ControllerMain? = null
+    private var controllerLogin: ControllerLogin? = null
     var textViewConnection: TextView? = null;
     private lateinit var appBarConfiguration: AppBarConfiguration
 

@@ -14,4 +14,6 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="activity_login">Login</string>
+    <string name="activity_registration">Registration</string>
+    <string name="registrate">Registrate</string>
 </resources>

@@ -5,4 +5,5 @@
     <color name="colorAccent">#CE2A5E</color>
     <color name="white">#FFFFFF</color>
     <color name="hint_color">#80FFFFFF</color>
+    <color name="DarkGreen">#00e600</color>
 </resources>

@@ -5,23 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".ui.Login.LoginActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/loginserverstate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:gravity="right"
-            android:text="Forgot password ?"
-            android:textColor="@color/white" />
-    </LinearLayout>
+    tools:context=".ui.Registration.RegistrationActivity">
 
 
     <LinearLayout
@@ -58,6 +42,22 @@
             android:textSize="21sp" />
 
         <EditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_email"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/hint_color"
+            android:textSize="21sp" />
+
+        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -73,32 +73,29 @@
             android:textColorHint="@color/hint_color"
             android:textSize="21sp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/password_second_time"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:gravity="right"
-            android:text="Forgot password ?"
-            android:textColor="@color/white" />
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_password"
+            android:ems="10"
+            android:hint="Password again"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/hint_color"
+            android:textSize="21sp" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/registrate"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/button_background"
-            android:text="Log in"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
-
-        <Button
-            android:id="@+id/signup"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/signup_button_background"
-            android:text="Sign up"
+            android:text="@string/registrate"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="21sp" />

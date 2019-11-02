@@ -12,7 +12,7 @@ open abstract class Database
 {
 
     @SuppressLint("SimpleDateFormat")
-    protected val dateFormatHosszu: DateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss")
+    protected val dateFormatHosszu: DateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss") as DateFormat
     @SuppressLint("SimpleDateFormat")
     protected val dateFormatRovid: DateFormat = SimpleDateFormat("yyyy.MM.dd")
 
@@ -31,7 +31,7 @@ open abstract class Database
     protected fun getResultSetHelper(): ResultSet? {
         return this.resultSetHelper
     }
-   protected fun dispose() {
+    fun dispose() {
 
         try {
             resultSet!!.close()

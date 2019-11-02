@@ -5,24 +5,25 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.clothshop.ui.Login.LoginActivity
 
 abstract class  ControllerBase
 {
-    private lateinit var loginactivity : LoginActivity;
+    private lateinit var activity : AppCompatActivity;
     protected var dialog: AlertDialog? = null
 
-    fun setActivity(loginactivity: LoginActivity){
-        this.loginactivity = loginactivity;
+    fun setActivity(activity: AppCompatActivity){
+        this.activity = activity;
     }
 
-    fun getLoginActivity() : LoginActivity?
+    fun getActivity() : AppCompatActivity?
     {
-        return this.loginactivity;
+        return this.activity;
     }
 
     fun MessageBox(uzenetSzoveg: String) {
-        Toast.makeText(getLoginActivity()!!.getApplicationContext(), uzenetSzoveg, Toast.LENGTH_LONG)
+        Toast.makeText(getActivity()!!.getApplicationContext(), uzenetSzoveg, Toast.LENGTH_LONG)
             .show()
     }
 
