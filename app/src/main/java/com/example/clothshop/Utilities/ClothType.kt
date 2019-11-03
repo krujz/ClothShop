@@ -6,8 +6,15 @@ enum class ClothType
 
     override fun toString(): String {
         when (this) {
-            DRESS -> return "Server is online!"
-            else -> return "Server is offline!"
+            DRESS -> return "DRESS"
+            SHIRT -> return "SHIRT"
+            SOCKS -> return "SOCKS"
+            SHOES -> return "SHOES"
+            BELT -> return "BELT"
+            BRA -> return "BRA"
+            JUMPER -> return "JUMPER"
+            TROUSER -> return "TROUSER"
+            else -> return "FARMER"
         }
     }
 

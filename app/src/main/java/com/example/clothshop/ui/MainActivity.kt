@@ -19,8 +19,6 @@ import com.example.clothshop.R
 
 class MainActivity : AppCompatActivity() {
 
-    private var controllerLogin: ControllerLogin? = null
-    var textViewConnection: TextView? = null;
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {

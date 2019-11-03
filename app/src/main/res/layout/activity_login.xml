@@ -55,7 +55,9 @@
             android:padding="10dp"
             android:textColor="@color/white"
             android:textColorHint="@color/hint_color"
-            android:textSize="21sp" />
+            android:textSize="21sp"
+            android:text="gergo"
+            />
 
         <EditText
             android:id="@+id/password"
@@ -71,7 +73,9 @@
             android:padding="10dp"
             android:textColor="@color/white"
             android:textColorHint="@color/hint_color"
-            android:textSize="21sp" />
+            android:textSize="21sp"
+            android:text="aa"
+            />
 
         <TextView
             android:layout_width="match_parent"
