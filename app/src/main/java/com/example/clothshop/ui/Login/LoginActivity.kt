@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import com.example.clothshop.Businesslogic.ControllerLogin
-import com.example.clothshop.Models.User
+import com.example.clothshop.models.User
 import com.example.clothshop.ui.MainActivity
 import com.example.clothshop.ui.Registration.RegistrationActivity
 

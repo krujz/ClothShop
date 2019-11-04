@@ -1,25 +1,21 @@
 package com.example.clothshop.Repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.clothshop.Models.Builders.ClothBuilder
-import com.example.clothshop.Models.Cloth
+import com.example.clothshop.models.builders.ClothBuilder
+import com.example.clothshop.models.Cloth
 import com.example.clothshop.Utilities.ClothType
 import java.sql.ResultSet
 
 class ClothRepository : Database()
 {
     var clothBuilder : ClothBuilder? = null
-    var listofCloths : MutableList<Cloth?>? = null
-
-    val mutablelivedata_cloths = MutableLiveData<MutableList<Cloth?>?>()
-    //val livedata_cloths : LiveData<MutableList<Cloth?>?>
-      //  get() = mutablelivedata_cloths
+    var sizeofArray : Int = 0
+    var  listofCloths : MutableList<Cloth>
+    var addablecloth : Cloth? = null
 
     init
     {
-        this.clothBuilder = ClothBuilder();
-        listofCloths = mutableListOf()
+        listofCloths = mutableListOf<Cloth>()
+        clothBuilder = ClothBuilder()
     }
 
     companion object
@@ -59,19 +55,40 @@ class ClothRepository : Database()
     {
         try
         {
+
+            /*
             while (resultset!!.next())
             {
-                listofCloths!!.add(
-                    clothBuilder!!.setCloth(resultset.getString("Cloth"))!!
+                addablecloth = clothBuilder!!.setCloth(resultset.getString("Cloth"))!!
                         .setType(ClothType.fromString(resultset.getString("Type")))!!
                         .setCost(resultset.getInt("Cost"))!!
                         .setIsBought(resultset.getBoolean("IsBought"))!!
                         .setIsInInventory(resultset.getBoolean("IsInInventory"))!!
                         .setIsOrdered(resultset.getBoolean("IsOrdered"))!!
                         .setDeleted(resultset.getBoolean("IsDeleted"))!!
-                        .getClothBuilder())
+                        .getClothBuilder()!!
+
+                listofCloths.add(addablecloth!!)
+
             }
-            mutablelivedata_cloths.value = listofCloths;
+
+             */
+
+
+
+            var cloth = Cloth()
+            cloth.setCloth("ss")
+            cloth.setType(ClothType.DRESS)
+            cloth.setCost(1000)
+            cloth.setIsBought(false)
+            cloth.setIsInInventory(false)
+            cloth.setIsOrdered(false)
+            cloth.setIsDeleted(false)
+
+            listofCloths.add(cloth)
+
+
+            //mutablelivedata_cloths.value = listofCloths;
 
         }
         catch (e : Exception)

@@ -2,7 +2,7 @@ package com.example.clothshop.Businesslogic
 
 import android.content.Context
 import android.net.wifi.WifiManager
-import com.example.clothshop.Models.User
+import com.example.clothshop.models.User
 import com.example.clothshop.Repository.DataBaseQuerry
 import com.example.clothshop.Repository.Enums.ServerState
 import com.example.clothshop.Repository.LoginRepository

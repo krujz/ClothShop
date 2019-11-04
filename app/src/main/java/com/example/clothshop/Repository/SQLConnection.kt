@@ -25,7 +25,7 @@ class SQLConnection
 
                 Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance()
                 conDatabase =
-                    DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.16;databaseName=AndroidProject;user=sa;password=Hungaria5;integratedSecurity=true;loginTimeout=5;socketTimeout=5")
+                    DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.68.104;databaseName=AndroidProject;user=sa;password=Hungaria5;integratedSecurity=true;loginTimeout=5;socketTimeout=5")
 
 
 

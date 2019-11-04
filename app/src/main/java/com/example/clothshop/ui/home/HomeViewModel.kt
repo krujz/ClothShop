@@ -1,15 +1,12 @@
 package com.example.clothshop.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.clothshop.Models.Cloth
-import com.example.clothshop.Repository.ClothRepository
 
 class HomeViewModel : ViewModel() {
 
+    /*
     var clothRepository : ClothRepository? = null
-    private val cloths : MutableLiveData<MutableList<Cloth?>?>
+    val cloths : MutableLiveData<MutableList<Cloth?>?>
     get() = clothRepository!!.mutablelivedata_cloths
 
     var textviewcloth : String? = null
@@ -24,4 +21,6 @@ class HomeViewModel : ViewModel() {
         clothRepository!!.getCloths()
         textviewcloth = this.cloths.value!![0]!!.getCloth()
     }
+
+     */
 }
