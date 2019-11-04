@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.widget.FrameLayout
 import com.example.clothshop.models.ClothModel
 import com.example.clothshop.R
 import com.example.clothshop.ui.home.HomeFragment
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
         val detailsFragment = HomeItemFragment.newInstace(clothmodel)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.drawer_layout,detailsFragment,"Cloth")
+            .replace(R.id.nav_view,detailsFragment,"Cloth")
             .addToBackStack(null)
             .commit()
     }
@@ -35,12 +36,7 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.drawer_layout,HomeFragment.newInstance(), "cloths")
-                .commit()
-        }
+
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -53,6 +49,7 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
+
 
         //textViewConnection = findViewById(R.id.textViewConnection)
 

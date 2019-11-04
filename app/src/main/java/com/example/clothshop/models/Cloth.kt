@@ -2,7 +2,7 @@ package com.example.clothshop.models
 
 import com.example.clothshop.Utilities.ClothType
 
-class Cloth()
+class Cloth(cloth: String?,type: ClothType?,cost: Int?,isBought: Boolean?,isInInventory: Boolean?,isOrdered: Boolean?,isDeleted: Boolean?)
 {
     private var cloth : String? = null;
     private var type : ClothType? = null;
@@ -11,6 +11,16 @@ class Cloth()
     private var isInInventory : Boolean? = null;
     private var isOrdered : Boolean? = null;
     private var isDeleted : Boolean? = null;
+
+    init {
+        this.cloth = cloth
+        this.type = type
+        this.cost = cost
+        this.isBought = isBought
+        this.isInInventory = isInInventory
+        this.isOrdered = isOrdered
+        this.isDeleted = isDeleted
+    }
 
 
     fun setCloth(cloth : String?){this.cloth = cloth;}

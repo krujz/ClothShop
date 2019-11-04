@@ -49,5 +49,5 @@ class ClothBuilder
         return this;
     }
 
-    fun getClothBuilder() : Cloth {return Cloth(); }
+    fun getClothBuilder() : Cloth {return Cloth(cloth,type,cost,isBought,isInInventory,isOrdered,isDeleted); }
 }

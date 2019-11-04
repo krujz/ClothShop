@@ -17,13 +17,13 @@ import com.example.clothshop.databinding.RecyclerItemClothModelBinding
 
 class HomeFragment : Fragment() {
 
-    private  var cloths : MutableList<String> = mutableListOf<String>()
-    private  var types : MutableList<ClothType> = mutableListOf<ClothType>()
-    private  var costs : MutableList<Int> = mutableListOf<Int>()
-    private  var isBoughts : MutableList<Boolean> = mutableListOf<Boolean>()
-    private  var isIninventories : MutableList<Boolean> = mutableListOf<Boolean>()
-    private  var isOrdereds: MutableList<Boolean> = mutableListOf<Boolean>()
-    private  var isDeleteds : MutableList<Boolean> = mutableListOf<Boolean>()
+    private  var cloths : MutableList<String>? = mutableListOf()
+    private  var types : MutableList<ClothType>? = mutableListOf()
+    private  var costs : MutableList<Int>? = mutableListOf()
+    private  var isBoughts : MutableList<Boolean>? = mutableListOf()
+    private  var isIninventories : MutableList<Boolean>? = mutableListOf()
+    private  var isOrdereds: MutableList<Boolean>? = mutableListOf()
+    private  var isDeleteds : MutableList<Boolean> ? = mutableListOf()
     private lateinit  var listener: OnClothSelected
 
     companion object
@@ -47,19 +47,22 @@ class HomeFragment : Fragment() {
         }
 
         val clothRepository = ClothRepository.getInstace()
-        ClothRepository.getInstace()!!.getCloths()
+        //TODO : megoldani hogy csak 1x fusson le
+        clothRepository!!.getCloths()
+
         var i = 0
-        while (i < clothRepository!!.listofCloths.size )
+        while (i < clothRepository!!.listofCloths.size)
         {
-            cloths.add(clothRepository.listofCloths[i].getCloth()!!)
-            types.add(clothRepository.listofCloths[i].getType()!!)
-            costs.add(clothRepository.listofCloths[i].getCost()!!)
-            isBoughts.add(clothRepository.listofCloths[i].getIsBought()!!)
-            isIninventories.add(clothRepository.listofCloths[i].getIsInInventory()!!)
-            isOrdereds.add(clothRepository.listofCloths[i].getIsOrdered()!!)
-            isDeleteds.add(clothRepository.listofCloths[i].getIsDeleted()!!)
+            cloths!!.add(clothRepository.listofCloths[i].getCloth()!!)
+            types!!.add(clothRepository.listofCloths[i].getType()!!)
+            costs!!.add(clothRepository.listofCloths[i].getCost()!!)
+            isBoughts!!.add(clothRepository.listofCloths[i].getIsBought()!!)
+            isIninventories!!.add(clothRepository.listofCloths[i].getIsInInventory()!!)
+            isOrdereds!!.add(clothRepository.listofCloths[i].getIsOrdered()!!)
+            isDeleteds!!.add(clothRepository.listofCloths[i].getIsDeleted()!!)
             i++
         }
+
 
     }
 
@@ -75,6 +78,7 @@ class HomeFragment : Fragment() {
 
         recyclerView.layoutManager = GridLayoutManager(activity, 1)
         recyclerView.adapter = ClothsAdapter(activity)
+
 
         return view
     }

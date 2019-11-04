@@ -56,7 +56,7 @@ class ClothRepository : Database()
         try
         {
 
-            /*
+
             while (resultset!!.next())
             {
                 addablecloth = clothBuilder!!.setCloth(resultset.getString("Cloth"))!!
@@ -72,9 +72,9 @@ class ClothRepository : Database()
 
             }
 
-             */
 
 
+/*
 
             var cloth = Cloth()
             cloth.setCloth("ss")
@@ -85,7 +85,9 @@ class ClothRepository : Database()
             cloth.setIsOrdered(false)
             cloth.setIsDeleted(false)
 
-            listofCloths.add(cloth)
+ */
+
+
 
 
             //mutablelivedata_cloths.value = listofCloths;
