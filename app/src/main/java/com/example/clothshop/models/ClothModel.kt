@@ -9,4 +9,5 @@ data class ClothModel(val cloth : String = "",
                       val isBought : Boolean,
                       val isIninvetory : Boolean,
                       val isOrdered : Boolean,
-                      val isDeleted : Boolean)  : Serializable
+                      val isDeleted : Boolean,
+                      val imageID : Int)  : Serializable

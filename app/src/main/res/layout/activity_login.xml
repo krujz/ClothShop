@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:gravity="right"
-            android:text="Forgot password ?"
+            android:text="ServerState"
             android:textColor="@color/white" />
     </LinearLayout>
 

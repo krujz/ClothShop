@@ -11,6 +11,7 @@ class Cloth(cloth: String?,type: ClothType?,cost: Int?,isBought: Boolean?,isInIn
     private var isInInventory : Boolean? = null;
     private var isOrdered : Boolean? = null;
     private var isDeleted : Boolean? = null;
+    private var imageID : Int? = null;
 
     init {
         this.cloth = cloth
@@ -38,5 +39,6 @@ class Cloth(cloth: String?,type: ClothType?,cost: Int?,isBought: Boolean?,isInIn
     fun getIsInInventory(): Boolean? {return this.isInInventory}
     fun getIsOrdered(): Boolean? {return this.isOrdered}
     fun getIsDeleted(): Boolean? {return this.isDeleted}
+    fun getImageID() : Int? {return this.imageID}
 
 }

@@ -13,6 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp">
 
+        <ImageView
+            android:id="@+id/cloth_img"
+            imageResource="@{clothModel.imageID}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside" />
 
         <TextView
             android:id="@+id/name"

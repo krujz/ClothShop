@@ -8,7 +8,6 @@ import java.sql.ResultSet
 class ClothRepository : Database()
 {
     var clothBuilder : ClothBuilder? = null
-    var sizeofArray : Int = 0
     var  listofCloths : MutableList<Cloth>
     var addablecloth : Cloth? = null
 
@@ -73,25 +72,6 @@ class ClothRepository : Database()
             }
 
 
-
-/*
-
-            var cloth = Cloth()
-            cloth.setCloth("ss")
-            cloth.setType(ClothType.DRESS)
-            cloth.setCost(1000)
-            cloth.setIsBought(false)
-            cloth.setIsInInventory(false)
-            cloth.setIsOrdered(false)
-            cloth.setIsDeleted(false)
-
- */
-
-
-
-
-            //mutablelivedata_cloths.value = listofCloths;
-
         }
         catch (e : Exception)
         {
@@ -102,9 +82,19 @@ class ClothRepository : Database()
             this.dispose()
         }
     }
-
-    fun ConvertBitToBoolean()
+    fun getImageIdFromType(clothtype: ClothType?) : Int?
     {
-
+        when(clothtype)
+        {
+            ClothType.DRESS -> return 0
+            ClothType.SHIRT -> return 1
+            ClothType.SOCKS -> return 2
+            ClothType.SHOES -> return 3
+            ClothType.BELT -> return 4
+            ClothType.BRA -> return 5
+            ClothType.JUMPER -> return 6
+            ClothType.TROUSER -> return 7
+            else -> return 8
+        }
     }
 }

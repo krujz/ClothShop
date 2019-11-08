@@ -22,7 +22,7 @@ enum class ClothType
     {
         fun fromString(type : String?) : ClothType?
         {
-            when(type)
+            when(type!!.trim())
             {
                 "DRESS" -> return DRESS
                 "SHIRT" -> return SHIRT

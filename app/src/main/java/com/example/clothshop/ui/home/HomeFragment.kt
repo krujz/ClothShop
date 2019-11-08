@@ -24,6 +24,7 @@ class HomeFragment : Fragment() {
     private  var isIninventories : MutableList<Boolean>? = mutableListOf()
     private  var isOrdereds: MutableList<Boolean>? = mutableListOf()
     private  var isDeleteds : MutableList<Boolean> ? = mutableListOf()
+    private  var imageID : MutableList<Int> ? = mutableListOf()
     private lateinit  var listener: OnClothSelected
 
     companion object
@@ -45,25 +46,6 @@ class HomeFragment : Fragment() {
         {
             throw Exception(context.toString() + " must implement onClothSelected")
         }
-
-        val clothRepository = ClothRepository.getInstace()
-        //TODO : megoldani hogy csak 1x fusson le
-        clothRepository!!.getCloths()
-
-        var i = 0
-        while (i < clothRepository!!.listofCloths.size)
-        {
-            cloths!!.add(clothRepository.listofCloths[i].getCloth()!!)
-            types!!.add(clothRepository.listofCloths[i].getType()!!)
-            costs!!.add(clothRepository.listofCloths[i].getCost()!!)
-            isBoughts!!.add(clothRepository.listofCloths[i].getIsBought()!!)
-            isIninventories!!.add(clothRepository.listofCloths[i].getIsInInventory()!!)
-            isOrdereds!!.add(clothRepository.listofCloths[i].getIsOrdered()!!)
-            isDeleteds!!.add(clothRepository.listofCloths[i].getIsDeleted()!!)
-            i++
-        }
-
-
     }
 
     override fun onCreateView(
@@ -74,12 +56,31 @@ class HomeFragment : Fragment() {
 
         val view : View = inflater.inflate(R.layout.fragment_home,container,false)
         val activity = activity as Context
-        val recyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_view)
+        val recyclerView = view!!.findViewById<RecyclerView>(R.id.home_recycle_view)
 
         recyclerView.layoutManager = GridLayoutManager(activity, 1)
         recyclerView.adapter = ClothsAdapter(activity)
 
-
+        val clothRepository = ClothRepository.getInstace()
+        val typedArray = resources.obtainTypedArray(R.array.images)
+        if (clothRepository!!.listofCloths!!.size == 0)
+        {
+            clothRepository!!.getCloths()
+        }
+            var i = 0
+            while (i < clothRepository!!.listofCloths.size)
+            {
+                cloths!!.add(clothRepository.listofCloths[i].getCloth()!!)
+                types!!.add(clothRepository.listofCloths[i].getType()!!)
+                costs!!.add(clothRepository.listofCloths[i].getCost()!!)
+                isBoughts!!.add(clothRepository.listofCloths[i].getIsBought()!!)
+                isIninventories!!.add(clothRepository.listofCloths[i].getIsInInventory()!!)
+                isOrdereds!!.add(clothRepository.listofCloths[i].getIsOrdered()!!)
+                isDeleteds!!.add(clothRepository.listofCloths[i].getIsDeleted()!!)
+                imageID!!.add(typedArray.getResourceId(clothRepository.getImageIdFromType(types!![i])!!, 0))
+                i++
+            }
+        typedArray.recycle()
         return view
     }
 
@@ -99,7 +100,7 @@ class HomeFragment : Fragment() {
 
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
             val cloth = ClothModel(cloths!![position],types!![position],costs!![position],isBoughts!![position],
-                isIninventories!![position],isOrdereds!![position],isDeleteds!![position])
+                isIninventories!![position],isOrdereds!![position],isDeleteds!![position],imageID!![position])
             viewHolder.setData(cloth)
             viewHolder.itemView.setOnClickListener{ listener!!.onClothSelected(cloth) }
         }
@@ -107,13 +108,13 @@ class HomeFragment : Fragment() {
     }
 
     internal inner class ViewHolder constructor(itemView: View,
-                                                private val recyclerItemDogListBinding:
+                                                private val recyclerItemClothListBinding:
                                                 RecyclerItemClothModelBinding
     ) :
         RecyclerView.ViewHolder(itemView) {
 
         fun setData(clothmodel: ClothModel?) {
-            recyclerItemDogListBinding!!.clothModel = clothmodel
+            recyclerItemClothListBinding!!.clothModel = clothmodel
         }
     }
 

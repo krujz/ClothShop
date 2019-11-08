@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="images">
+        <item>@drawable/cloth_dress</item>
+        <item>@drawable/cloth_shirt</item>
+        <item>@drawable/cloth_socks</item>
+        <item>@drawable/cloth_shoe</item>
+        <item>@drawable/cloth_belt</item>
+        <item>@drawable/cloth_bra</item>
+        <item>@drawable/cloth_jumper</item>
+        <item>@drawable/cloth_trousers</item>
+        <item>@drawable/cloth_farmer</item>
+    </array>
+
+</resources>
