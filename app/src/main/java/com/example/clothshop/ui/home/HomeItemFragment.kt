@@ -1,5 +1,6 @@
 package com.example.clothshop.ui.home
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.SpinnerAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.clothshop.R
 import com.example.clothshop.Repository.ClothRepository
@@ -63,6 +65,21 @@ class HomeItemFragment : Fragment()
     {
         var id = model!!.id.toInt()
         clothRepository!!.setCloth(Cloth(id, cloth,null, cost,null,null))
+
+        val dialogBuilder = AlertDialog.Builder(activity!!)
+        dialogBuilder.setMessage("A mentés sikeres volt")
+
+            // if the dialog is cancelable
+            .setCancelable(false)
+            .setPositiveButton("Ok", DialogInterface.OnClickListener {
+                    dialog, id ->
+                dialog.dismiss()
+            })
+
+
+        val alert = dialogBuilder.create()
+
+        alert.show()
     }
 
 }
