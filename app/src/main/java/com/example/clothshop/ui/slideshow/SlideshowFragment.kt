@@ -12,6 +12,14 @@ import com.example.clothshop.R
 
 class SlideshowFragment : Fragment() {
 
+
+    companion object
+    {
+        fun newInstance() : SlideshowFragment
+        {
+            return SlideshowFragment()
+        }
+    }
     private lateinit var slideshowViewModel: SlideshowViewModel
 
     override fun onCreateView(

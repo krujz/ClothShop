@@ -12,6 +12,13 @@ import com.example.clothshop.R
 
 class ToolsFragment : Fragment() {
 
+    companion object
+    {
+        fun newInstance() : ToolsFragment
+        {
+            return ToolsFragment()
+        }
+    }
     private lateinit var toolsViewModel: ToolsViewModel
 
     override fun onCreateView(

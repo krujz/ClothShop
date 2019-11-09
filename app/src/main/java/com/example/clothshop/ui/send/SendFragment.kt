@@ -12,6 +12,13 @@ import com.example.clothshop.R
 
 class SendFragment : Fragment() {
 
+    companion object
+    {
+        fun newInstance() : SendFragment
+        {
+            return SendFragment()
+        }
+    }
     private lateinit var sendViewModel: SendViewModel
 
     override fun onCreateView(

@@ -12,6 +12,13 @@ import com.example.clothshop.R
 
 class ShareFragment : Fragment() {
 
+    companion object
+    {
+        fun newInstance() : ShareFragment
+        {
+            return ShareFragment()
+        }
+    }
     private lateinit var shareViewModel: ShareViewModel
 
     override fun onCreateView(
