@@ -1,37 +1,81 @@
 package com.example.clothshop.ui
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import android.view.Menu
-import android.widget.FrameLayout
-import androidx.navigation.fragment.NavHostFragment
-import com.example.clothshop.Businesslogic.ControllerLogin
-import com.example.clothshop.models.ClothModel
 import com.example.clothshop.R
+import com.example.clothshop.models.ClothModel
 import com.example.clothshop.ui.gallery.GalleryFragment
 import com.example.clothshop.ui.home.HomeFragment
 import com.example.clothshop.ui.home.HomeItemFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
+
+class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected,NavigationView.OnNavigationItemSelectedListener {
+    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+        when(p0.itemId)
+        {
+            R.id.nav_home ->
+            {
+                val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
+                setSupportActionBar(toolbar)
+
+                val textView = toolbar.findViewById(R.id.toolbarTextView) as TextView
+                textView.text = "CLOTHS"
+
+                supportActionBar!!.setDisplayShowTitleEnabled(false)
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.contentmain, HomeFragment.newInstance(), "dogList")
+                    .commit()
+
+            }
+            R.id.nav_gallery ->
+            {
+                val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
+                setSupportActionBar(toolbar)
+
+                val textView = toolbar.findViewById(R.id.toolbarTextView) as TextView
+                textView.text = "GALLERY"
+
+                supportActionBar!!.setDisplayShowTitleEnabled(false)
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.contentmain, GalleryFragment.newInstance(), "dogList")
+                    .commit()
+
+            }
+        }
+        return true
+    }
+
     override fun onClothSelected(clothmodel: ClothModel)
     {
+
        val detailsFragment = HomeItemFragment.newInstace(clothmodel)
 
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.contentmain,detailsFragment,"Cloth")
             .addToBackStack(null)
             .commit()
+
+
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -40,8 +84,22 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        if (savedInstanceState == null)
+        {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.contentmain, HomeFragment.newInstance(), "dogList")
+                .commit()
+        }
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
         setSupportActionBar(toolbar)
+
+        val textView = toolbar.findViewById(R.id.toolbarTextView) as TextView
+        textView.text = "CLOTHS"
+
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         val fab: FloatingActionButton = this.findViewById(R.id.fab)
         fab.setOnClickListener { view ->
@@ -64,6 +122,7 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        nav_view.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -73,6 +132,9 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
+
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 }

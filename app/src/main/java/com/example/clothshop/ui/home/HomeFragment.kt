@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ import com.example.clothshop.databinding.RecyclerItemClothModelBinding
 
 class HomeFragment : Fragment() {
 
-    private  var cloths : MutableList<String>? = mutableListOf()
+     var cloths : MutableList<String>? = mutableListOf()
     private  var types : MutableList<ClothType>? = mutableListOf()
     private  var costs : MutableList<Int>? = mutableListOf()
     private  var isBoughts : MutableList<Boolean>? = mutableListOf()
@@ -26,6 +27,8 @@ class HomeFragment : Fragment() {
     private  var isDeleteds : MutableList<Boolean> ? = mutableListOf()
     private  var imageID : MutableList<Int> ? = mutableListOf()
     private lateinit  var listener: OnClothSelected
+
+
 
     companion object
     {
@@ -46,6 +49,27 @@ class HomeFragment : Fragment() {
         {
             throw Exception(context.toString() + " must implement onClothSelected")
         }
+        val clothRepository = ClothRepository.getInstace()
+        val typedArray = resources.obtainTypedArray(R.array.images)
+        if (clothRepository!!.listofCloths!!.size == 0)
+        {
+            clothRepository!!.getCloths()
+        }
+        var i = 0
+        while (i < clothRepository!!.listofCloths.size)
+        {
+            cloths!!.add(clothRepository.listofCloths[i].getCloth()!!)
+            types!!.add(clothRepository.listofCloths[i].getType()!!)
+            costs!!.add(clothRepository.listofCloths[i].getCost()!!)
+            isBoughts!!.add(clothRepository.listofCloths[i].getIsBought()!!)
+            isIninventories!!.add(clothRepository.listofCloths[i].getIsInInventory()!!)
+            isOrdereds!!.add(clothRepository.listofCloths[i].getIsOrdered()!!)
+            isDeleteds!!.add(clothRepository.listofCloths[i].getIsDeleted()!!)
+            imageID!!.add(typedArray.getResourceId(clothRepository.getImageIdFromType(types!![i])!!, 0))
+            i++
+        }
+
+        typedArray.recycle()
     }
 
     override fun onCreateView(
@@ -61,26 +85,8 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(activity, 1)
         recyclerView.adapter = ClothsAdapter(activity)
 
-        val clothRepository = ClothRepository.getInstace()
-        val typedArray = resources.obtainTypedArray(R.array.images)
-        if (clothRepository!!.listofCloths!!.size == 0)
-        {
-            clothRepository!!.getCloths()
-        }
-            var i = 0
-            while (i < clothRepository!!.listofCloths.size)
-            {
-                cloths!!.add(clothRepository.listofCloths[i].getCloth()!!)
-                types!!.add(clothRepository.listofCloths[i].getType()!!)
-                costs!!.add(clothRepository.listofCloths[i].getCost()!!)
-                isBoughts!!.add(clothRepository.listofCloths[i].getIsBought()!!)
-                isIninventories!!.add(clothRepository.listofCloths[i].getIsInInventory()!!)
-                isOrdereds!!.add(clothRepository.listofCloths[i].getIsOrdered()!!)
-                isDeleteds!!.add(clothRepository.listofCloths[i].getIsDeleted()!!)
-                imageID!!.add(typedArray.getResourceId(clothRepository.getImageIdFromType(types!![i])!!, 0))
-                i++
-            }
-        typedArray.recycle()
+
+
         return view
     }
 
