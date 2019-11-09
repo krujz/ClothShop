@@ -29,9 +29,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected,NavigationView.OnNavigationItemSelectedListener {
 
-
-
-
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {

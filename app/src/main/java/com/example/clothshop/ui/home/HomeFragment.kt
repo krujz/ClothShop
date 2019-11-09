@@ -20,11 +20,11 @@ class HomeFragment : Fragment() {
 
      var cloths : MutableList<String>? = mutableListOf()
     private  var types : MutableList<ClothType>? = mutableListOf()
-    private  var costs : MutableList<Int>? = mutableListOf()
-    private  var isBoughts : MutableList<Boolean>? = mutableListOf()
-    private  var isIninventories : MutableList<Boolean>? = mutableListOf()
-    private  var isOrdereds: MutableList<Boolean>? = mutableListOf()
-    private  var isDeleteds : MutableList<Boolean> ? = mutableListOf()
+    private  var costs : MutableList<String>? = mutableListOf()
+    private  var isBoughts : MutableList<String>? = mutableListOf()
+    private  var isIninventories : MutableList<String>? = mutableListOf()
+    private  var isOrdereds: MutableList<String>? = mutableListOf()
+    private  var isDeleteds : MutableList<String> ? = mutableListOf()
     private  var imageID : MutableList<Int> ? = mutableListOf()
     private lateinit  var listener: OnClothSelected
 
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         {
             cloths!!.add(clothRepository.listofCloths[i].getCloth()!!)
             types!!.add(clothRepository.listofCloths[i].getType()!!)
-            costs!!.add(clothRepository.listofCloths[i].getCost()!!)
+            costs!!.add("" +clothRepository.listofCloths[i].getCost()!!)
             isBoughts!!.add(clothRepository.listofCloths[i].getIsBought()!!)
             isIninventories!!.add(clothRepository.listofCloths[i].getIsInInventory()!!)
             isOrdereds!!.add(clothRepository.listofCloths[i].getIsOrdered()!!)

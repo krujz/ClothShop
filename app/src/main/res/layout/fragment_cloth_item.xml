@@ -13,48 +13,124 @@
         android:fillViewport="true"
         tools:ignore="RtlHardcoded">
 
+      <com.google.android.material.circularreveal.CircularRevealGridLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:columnCount="2"
+          android:layout_marginLeft="20dp"
+          android:orientation="horizontal"
+          android:layout_gravity="center_horizontal">
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/parent_layout"
-        >
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Név: "
+              />
+          <EditText
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="@{clothModel.cloth}"
+              android:id="@+id/cloth"
+              />
 
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            imageResource="@{clothModel.imageID}"
-            android:id="@+id/img_cloth"
-            />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="16dp"
-            >
-            <TextView
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Ár: "
+              />
+
+
+          <EditText
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:inputType="number"
+              android:text="@{clothModel.cost}"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Típus: "
+              />
+          <Spinner
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:entries="@array/ClothTypes"
+              android:id="@+id/spinner_type"
+              />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Állapot : "
+              />
+            <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="@{clothModel.cloth}"
-                android:id="@+id/cloth"
+                android:entries="@array/IsBought"
+                android:id="@+id/spinner_isBought"
                 />
-            <TextView
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Raktáron : "
+              />
+            <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="@{clothModel.type.toString()}"
-                android:id="@+id/type"
+                android:entries="@array/isInInventory"
+                android:id="@+id/spinner_isInInventory"
                 />
-            <TextView
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Rendelve : "
+              />
+            <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="100000 ft"
-                android:id="@+id/cost"
+                android:entries="@array/isOrdered"
+                android:id="@+id/spinner_isOrdered"
                 />
 
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Törölve : "
+              />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:entries="@array/isDeleted"
+                android:id="@+id/spinner_isDeleted"
+                />
+          <ImageView
+              android:id="@+id/cloth_image"
+              imageResource="@{clothModel.imageID}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:layout_marginBottom="20dp"
+              android:adjustViewBounds="true"
+              android:contentDescription="@null"
+              android:scaleType="centerCrop"
+              android:layout_column="0"
+              android:layout_columnSpan="2"/>
+      </com.google.android.material.circularreveal.CircularRevealGridLayout>
 
-        </LinearLayout>
-    </LinearLayout>
     </ScrollView>
 </layout>

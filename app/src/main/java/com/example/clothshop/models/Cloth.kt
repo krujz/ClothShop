@@ -35,10 +35,10 @@ class Cloth(cloth: String?,type: ClothType?,cost: Int?,isBought: Boolean?,isInIn
     fun getCloth(): String? {return this.cloth}
     fun getType(): ClothType? {return this.type}
     fun getCost(): Int? {return this.cost}
-    fun getIsBought(): Boolean? {return this.isBought}
-    fun getIsInInventory(): Boolean? {return this.isInInventory}
-    fun getIsOrdered(): Boolean? {return this.isOrdered}
-    fun getIsDeleted(): Boolean? {return this.isDeleted}
+    fun getIsBought(): String? { return if (this.isBought!!) {"Megvásárolva"} else {"Nincs megvásárolva"}}
+    fun getIsInInventory(): String? { return if (this.isInInventory!!) {"Raktáron"} else {"Nincs raktáron"}}
+    fun getIsOrdered(): String? { return if (this.isOrdered!!) {"Megrendelve"} else {"Nincs megrendelve"}}
+    fun getIsDeleted(): String? { return if (this.isDeleted!!) {"Törölve"} else {"Nincs törölve"}}
     fun getImageID() : Int? {return this.imageID}
 
 }

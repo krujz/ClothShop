@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.clothshop.models.ClothModel
 import com.example.clothshop.databinding.FragmentClothItemBinding
+import com.example.clothshop.models.ClothModel
+
 
 class HomeItemFragment : Fragment()
 {
@@ -31,6 +32,7 @@ class HomeItemFragment : Fragment()
 
         val model = arguments!!.getSerializable(CLOTHMODEL) as ClothModel?
         fragmentClothitemBinding!!.clothModel = model
+
 
         return fragmentClothitemBinding.root
     }

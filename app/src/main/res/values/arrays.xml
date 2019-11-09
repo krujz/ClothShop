@@ -12,4 +12,36 @@
         <item>@drawable/cloth_farmer</item>
     </array>
 
+    <string-array name="ClothTypes">
+        <item>DRESS</item>
+        <item>SHIRT</item>
+        <item>SOCKS</item>
+        <item>SHOES</item>
+        <item>BELT</item>
+        <item>BRA</item>
+        <item>JUMPER</item>
+        <item>TROUSER</item>
+        <item>FARMER</item>
+    </string-array>
+
+    <string-array name="IsBought">
+    <item>Megvásárolva</item>
+    <item>Nincs megvásárolva</item>
+    </string-array>
+
+    <string-array name="isInInventory">
+        <item>Raktáron</item>
+        <item>Nincs raktáron</item>
+    </string-array>
+
+    <string-array name="isOrdered">
+        <item>Megrendelve</item>
+        <item>Nincs megrendelve</item>
+    </string-array>
+
+    <string-array name="isDeleted">
+        <item>Törölve</item>
+        <item>Nincs törölve</item>
+    </string-array>
+
 </resources>

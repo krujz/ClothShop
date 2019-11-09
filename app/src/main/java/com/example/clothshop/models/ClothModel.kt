@@ -5,9 +5,9 @@ import java.io.Serializable
 
 data class ClothModel(val cloth : String = "",
                       val type : ClothType,
-                      val cost : Int,
-                      val isBought : Boolean,
-                      val isIninvetory : Boolean,
-                      val isOrdered : Boolean,
-                      val isDeleted : Boolean,
+                      val cost : String,
+                      val isBought : String,
+                      val isIninvetory : String,
+                      val isOrdered : String,
+                      val isDeleted : String,
                       val imageID : Int)  : Serializable
