@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
 
         <variable
@@ -16,11 +17,25 @@
       <com.google.android.material.circularreveal.CircularRevealGridLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="20dp"
           android:columnCount="2"
-          android:layout_marginLeft="20dp"
           android:orientation="horizontal"
           android:layout_gravity="center_horizontal">
 
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="ID: "
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="@{clothModel.id}"
+              android:id="@+id/id"
+              />
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -49,88 +64,76 @@
               android:textStyle="bold"
               android:inputType="number"
               android:text="@{clothModel.cost}"
+              android:id="@+id/cost"
               />
+          <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textStyle="bold"
+          android:text="Típus: "
+          />
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textStyle="bold"
-              android:text="Típus: "
-              />
-          <Spinner
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:entries="@array/ClothTypes"
-              android:id="@+id/spinner_type"
+              android:text="@{clothModel.type.toString()}"
+              android:id="@+id/type"
               />
 
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textStyle="bold"
-              android:text="Állapot : "
+              android:text="Vásárlások száma:  "
               />
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:entries="@array/IsBought"
-                android:id="@+id/spinner_isBought"
-                />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="@{clothModel.timesOfBought}"
+              android:id="@+id/timesofbought"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="Raktáron:  "
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:text="@{clothModel.isIninvetory()}"
+              android:id="@+id/isininventory"
+              />
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Raktáron : "
-              />
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:entries="@array/isInInventory"
-                android:id="@+id/spinner_isInInventory"
-                />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Rendelve : "
-              />
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:entries="@array/isOrdered"
-                android:id="@+id/spinner_isOrdered"
-                />
+       <ImageView
+         android:id="@+id/cloth_image"
+         imageResource="@{clothModel.imageID}"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="20dp"
+         android:layout_marginBottom="20dp"
+         android:adjustViewBounds="true"
+         android:contentDescription="@null"
+         android:scaleType="centerCrop"
+         android:layout_column="0"
+         android:layout_columnSpan="2"/>
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Törölve : "
-              />
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:entries="@array/isDeleted"
-                android:id="@+id/spinner_isDeleted"
-                />
-          <ImageView
-              android:id="@+id/cloth_image"
-              imageResource="@{clothModel.imageID}"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="20dp"
-              android:layout_marginBottom="20dp"
-              android:adjustViewBounds="true"
-              android:contentDescription="@null"
-              android:scaleType="centerCrop"
+          <Button
+              android:id="@+id/btn_save"
+              android:layout_width="300dp"
+              android:layout_height="48dp"
+              android:layout_marginBottom="30dp"
+              android:background="@drawable/signup_button_background"
+              android:text="Save"
+              android:textAllCaps="false"
+              android:textColor="@color/white"
+              android:textSize="21sp"
               android:layout_column="0"
-              android:layout_columnSpan="2"/>
-      </com.google.android.material.circularreveal.CircularRevealGridLayout>
+              android:layout_columnSpan="2"
+              android:layout_gravity="center_horizontal"/>
+ </com.google.android.material.circularreveal.CircularRevealGridLayout>
 
-    </ScrollView>
+</ScrollView>
 </layout>

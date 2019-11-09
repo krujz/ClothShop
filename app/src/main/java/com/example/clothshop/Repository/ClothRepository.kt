@@ -1,5 +1,7 @@
 package com.example.clothshop.Repository
 
+import android.app.PendingIntent.getActivity
+import android.widget.Toast
 import com.example.clothshop.models.builders.ClothBuilder
 import com.example.clothshop.models.Cloth
 import com.example.clothshop.Utilities.ClothType
@@ -8,8 +10,9 @@ import java.sql.ResultSet
 class ClothRepository : Database()
 {
     var clothBuilder : ClothBuilder? = null
-    var  listofCloths : MutableList<Cloth>
+    var listofCloths : MutableList<Cloth>
     var addablecloth : Cloth? = null
+    var onChangeid : Int? = null
 
     init
     {
@@ -31,18 +34,25 @@ class ClothRepository : Database()
     {
         try
         {
-            querry = "INSERT INTO [dbo].[Cloths] (Cloth,Type,Cost,IsBought,IsInInventory,IsOrdered, IsDeleted) " +
-                    "values (${cloth!!.getCloth()},${cloth!!.getType().toString()},${cloth!!.getCost()},0,1,0,0)"
+            querry = "UPDATE [dbo].[Cloth] SET Cloth='${cloth!!.getCloth()}',Cost=${cloth!!.getCost()} WHERE id= ${cloth.getId()}"
             runDatabseUpload(querry!!)
+            onChangeid = cloth.getId()!!.minus(1)
+            listofCloths[onChangeid!!].setCloth(cloth.getCloth())
+            listofCloths[onChangeid!!].setCost(cloth.getCost())
+
+
         }
-        catch (e: Exception){{}}
+        catch (e: Exception)
+        {
+
+        }
     }
 
     fun getCloths()
     {
         try
         {
-            querry = "Select * FROM [dbo].[Cloths]"
+            querry = "Select * FROM [dbo].[Cloth]"
             runDatabaseQuerry(querry!!)
 
             this.MakeCloths(getResultSet()!!)
@@ -54,17 +64,15 @@ class ClothRepository : Database()
     {
         try
         {
-
-
             while (resultset!!.next())
             {
-                addablecloth = clothBuilder!!.setCloth(resultset.getString("Cloth"))!!
+                addablecloth = clothBuilder!!
+                        .setId(resultset.getInt("id"))!!
+                        .setCloth(resultset.getString("Cloth"))!!
                         .setType(ClothType.fromString(resultset.getString("Type")))!!
                         .setCost(resultset.getInt("Cost"))!!
-                        .setIsBought(resultset.getBoolean("IsBought"))!!
+                        .setTimesOfBought(resultset.getInt("Times_of_bought"))!!
                         .setIsInInventory(resultset.getBoolean("IsInInventory"))!!
-                        .setIsOrdered(resultset.getBoolean("IsOrdered"))!!
-                        .setDeleted(resultset.getBoolean("IsDeleted"))!!
                         .getClothBuilder()!!
 
                 listofCloths.add(addablecloth!!)

@@ -5,14 +5,19 @@ import com.example.clothshop.Utilities.ClothType
 
 class ClothBuilder
 {
+    private var id : Int? = null
     private var cloth : String? = null;
     private var type : ClothType? = null;
     private var cost : Int? = null;
-    private var isBought : Boolean? = null;
+    private var timesOfBought : Int? = null
     private var isInInventory : Boolean? = null;
-    private var isOrdered : Boolean? = null;
-    private var isDeleted : Boolean? = null;
 
+    fun setId(id : Int?) : ClothBuilder?
+    {
+        this.id = id;
+        return this;
+
+    }
     fun setCloth(cloth : String?) : ClothBuilder?
     {
         this.cloth = cloth;
@@ -28,27 +33,17 @@ class ClothBuilder
         this.cost = cost;
         return this;
     }
-    fun setIsBought(isBought : Boolean?) : ClothBuilder?
+    fun setTimesOfBought(timesOfBought : Int?) : ClothBuilder?
     {
-        this.isBought = isBought;
+        this.timesOfBought = timesOfBought;
         return this;
+
     }
     fun setIsInInventory(isInInventory : Boolean?) : ClothBuilder?
     {
         this.isInInventory = isInInventory;
         return this;
     }
-    fun setIsOrdered(isOrdered : Boolean?) : ClothBuilder?
-    {
-        this.isOrdered = isOrdered;
-        return this;
-    }
-    fun setDeleted(isDeleted : Boolean?) : ClothBuilder?
-    {
-        this.isDeleted = isDeleted;
-        return this;
-    }
 
-
-    fun getClothBuilder() : Cloth {return Cloth(cloth,type,cost,isBought,isInInventory,isOrdered,isDeleted); }
+    fun getClothBuilder() : Cloth {return Cloth(id,cloth,type,cost,timesOfBought,isInInventory); }
 }

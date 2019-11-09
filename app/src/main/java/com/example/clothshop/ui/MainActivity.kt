@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -137,7 +138,9 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnClothSelected,Navigation
                     .commit()
 
             }
+
         }
+        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
