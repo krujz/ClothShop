@@ -1,6 +1,6 @@
 package com.example.clothshop.models
 
-class User()
+class User
 {
 
     companion object
@@ -8,13 +8,11 @@ class User()
         private var instace : User? = null
         fun getInstace() : User?
         {
-            if (instace == null)
-            {
-                instace = User()
-            }
+            if (instace == null){instace = User()}
             return instace;
         }
     }
+
     private var username :String? = null
     private var email :String? = null
 

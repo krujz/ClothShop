@@ -8,132 +8,189 @@
             name="clothModel"
             type="com.example.clothshop.models.ClothModel" />
     </data>
+
     <ScrollView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         tools:ignore="RtlHardcoded">
 
-      <com.google.android.material.circularreveal.CircularRevealGridLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="20dp"
-          android:layout_marginBottom="20dp"
-          android:columnCount="2"
-          android:orientation="horizontal"
-          android:layout_gravity="center_horizontal">
+        <com.google.android.material.circularreveal.CircularRevealGridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:columnCount="2"
+            android:orientation="horizontal">
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="ID: "
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="@{clothModel.id}"
-              android:id="@+id/id"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Név: "
-              />
-          <EditText
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="@{clothModel.cloth}"
-              android:id="@+id/cloth"
-              />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+                android:textStyle="bold" />
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Ár: "
-              />
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.id}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Név: "
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/cloth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.cloth}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ár: "
+                android:textStyle="bold" />
 
 
-          <EditText
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:inputType="number"
-              android:text="@{clothModel.cost}"
-              android:id="@+id/cost"
-              />
-          <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textStyle="bold"
-          android:text="Típus: "
-          />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="@{clothModel.type.toString()}"
-              android:id="@+id/type"
-              />
+            <EditText
+                android:id="@+id/cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="@{clothModel.cost}"
+                android:textStyle="bold" />
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Vásárlások száma:  "
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="@{clothModel.timesOfBought}"
-              android:id="@+id/timesofbought"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="Raktáron:  "
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:text="@{clothModel.isIninvetory()}"
-              android:id="@+id/isininventory"
-              />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Típus: "
+                android:textStyle="bold" />
 
-       <ImageView
-         android:id="@+id/cloth_image"
-         imageResource="@{clothModel.imageID}"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="20dp"
-         android:layout_marginBottom="20dp"
-         android:adjustViewBounds="true"
-         android:contentDescription="@null"
-         android:scaleType="centerCrop"
-         android:layout_column="0"
-         android:layout_columnSpan="2"/>
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.type.toString()}"
+                android:textStyle="bold" />
 
-          <Button
-              android:id="@+id/btn_save"
-              android:layout_width="300dp"
-              android:layout_height="48dp"
-              android:layout_marginBottom="30dp"
-              android:background="@drawable/signup_button_background"
-              android:text="Save"
-              android:textAllCaps="false"
-              android:textColor="@color/white"
-              android:textSize="21sp"
-              android:layout_column="0"
-              android:layout_columnSpan="2"
-              android:layout_gravity="center_horizontal"/>
- </com.google.android.material.circularreveal.CircularRevealGridLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vásárlások száma:  "
+                android:textStyle="bold" />
 
-</ScrollView>
+            <TextView
+                android:id="@+id/timesofbought"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.timesOfBought}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raktáron:  "
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/isininventory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.isIninvetory()}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Db:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.stock.toString()}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rendelt mennyiség:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{clothModel.orderCount}"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cloth_image"
+                imageResource="@{clothModel.imageID}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_background"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="21sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rendelés:  "
+                android:textStyle="bold"
+                android:gravity="bottom"
+                />
+
+
+            <EditText
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Count"
+                android:inputType="number"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_order"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/signup_button_background"
+                android:text="Order"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="21sp" />
+
+
+
+        </com.google.android.material.circularreveal.CircularRevealGridLayout>
+
+    </ScrollView>
 </layout>

@@ -1,6 +1,6 @@
 package com.example.clothshop.models
 
-import com.example.clothshop.Utilities.ClothType
+import com.example.clothshop.utilities.ClothType
 import java.io.Serializable
 
 data class ClothModel(val id : String,
@@ -9,4 +9,6 @@ data class ClothModel(val id : String,
                       val cost : String,
                       val timesOfBought : String,
                       val isIninvetory : String,
-                      val imageID : Int)  : Serializable
+                      val imageID : Int,
+                      val stock : String,
+                      val orderCount : String)  : Serializable
