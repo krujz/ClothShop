@@ -48,7 +48,7 @@ class ClothRepository : Database()
     {
         try
         {
-            querry = "UPDATE [dbo].[Cloth] set OrderCount = OrderCount + $count WHERE id = ${cloth.id}"
+            querry = "UPDATE [dbo].[Cloth] set OrderCount = $count WHERE id = ${cloth.id}"
             runDatabseUpload(querry!!)
 
         }

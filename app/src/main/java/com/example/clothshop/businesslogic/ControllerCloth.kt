@@ -11,6 +11,15 @@ class ControllerCloth(clothRepository: ClothRepository) : ControllerBase() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    companion object
+    {
+        private var instace : ControllerCloth? = null
+        fun getInstace() : ControllerCloth?
+        {
+            if (instace ==  null){instace = ControllerCloth(ClothRepository.getInstace()!!)}
+            return instace
+        }
+    }
     var clothRepository : ClothRepository? = null
     var onChangeid : Int? = null
 
@@ -18,14 +27,23 @@ class ControllerCloth(clothRepository: ClothRepository) : ControllerBase() {
 
     fun getListOfCloths() : MutableList<Cloth>{return this.clothRepository!!.getListOfCloths()}
 
-    fun updateOrder(cloth : ClothModel, count : String?) { clothRepository!!.updateOrder(cloth,count)}
+    fun updateOrder(cloth : ClothModel, count : String?)
+    {
+        this.clothRepository!!.updateOrder(cloth,count)
+        this.onChangeid = cloth!!.id!!.toInt()
+        var changedcloth = this.clothRepository!!.listofCloths.first{ x->x.getId() == onChangeid}
+        var i = this.clothRepository!!.listofCloths.indexOf(changedcloth)
+        this.clothRepository!!.listofCloths[i].setOrderCount(count!!.toInt())
+    }
 
     fun setCloth(cloth : Cloth?)
     {
         this.clothRepository!!.setCloth(cloth)
         this.onChangeid = cloth!!.getId()!!.minus(1)
-        this.clothRepository!!.listofCloths[onChangeid!!].setCloth(cloth.getCloth())
-        this.clothRepository!!.listofCloths[onChangeid!!].setCost(cloth.getCost())
+        var changedcloth = this.clothRepository!!.listofCloths.first{ x->x.getId() == onChangeid}
+        var i = this.clothRepository!!.listofCloths.indexOf(changedcloth)
+        this.clothRepository!!.listofCloths[i].setCloth(cloth.getCloth())
+        this.clothRepository!!.listofCloths[i].setCost(cloth.getCost())
     }
 
     fun MakeCloths()
@@ -37,8 +55,7 @@ class ControllerCloth(clothRepository: ClothRepository) : ControllerBase() {
             val clothBuilder = ClothBuilder()
             val listofCloths = mutableListOf<Cloth>()
 
-            while (resultset!!.next())
-            {
+            while (resultset!!.next()) {
                 addablecloth = clothBuilder
                     .setId(resultset.getInt("id"))!!
                     .setCloth(resultset.getString("Cloth"))!!

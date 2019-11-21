@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.Bindable
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import com.example.clothshop.R
 import com.example.clothshop.businesslogic.ControllerCloth
 import com.example.clothshop.repository.ClothRepository
@@ -23,7 +25,7 @@ class HomeItemFragment : Fragment()
     private var edittextCloth : EditText? = null
     private var edittextCost : EditText? = null
     private var edittextCount : EditText? = null
-    private var controllerCloth : ControllerCloth = ControllerCloth(ClothRepository.getInstace()!!)
+    private var controllerCloth : ControllerCloth = ControllerCloth.getInstace()!!
 
     companion object
     {
@@ -46,6 +48,8 @@ class HomeItemFragment : Fragment()
         val fragmentClothitemBinding = FragmentClothItemBinding.inflate(inflater, container, false)
 
         model = arguments!!.getSerializable(CLOTHMODEL) as ClothModel?
+
+
         fragmentClothitemBinding.clothModel = model
 
         var view = fragmentClothitemBinding.root
@@ -55,13 +59,8 @@ class HomeItemFragment : Fragment()
         edittextCost = view.findViewById(R.id.cost)
         edittextCount = view.findViewById(R.id.count)
 
-        btnSave!!.setOnClickListener {
-            var cloth = edittextCloth!!.text.toString()
-            var cost = edittextCost!!.text.toString()
-            saveCurrentChanges(cloth,cost.toInt())
-        }
-
-        btnOrder!!.setOnClickListener {setNewOrder()}
+        setOnClickListenerSave(fragmentClothitemBinding)
+        setOnClickListenerOrder(fragmentClothitemBinding)
 
         return fragmentClothitemBinding.root
     }
@@ -72,9 +71,9 @@ class HomeItemFragment : Fragment()
         saveMessage()
     }
 
-    private fun setNewOrder()
+    private fun setNewOrder(count : String)
     {
-        var count = edittextCount!!.text.toString()
+
         val dialogBuilder = AlertDialog.Builder(activity!!)
         dialogBuilder.setTitle("Biztos rendelni szeretnél?")
         dialogBuilder.setMessage("A rendelt mennyiség :$count")
@@ -100,6 +99,29 @@ class HomeItemFragment : Fragment()
 
         val alert = dialogBuilder.create()
         alert.show()
+    }
+
+    private fun setOnClickListenerSave(fragmentClothitemBinding : FragmentClothItemBinding)
+    {
+        btnSave!!.setOnClickListener {
+            var cloth = edittextCloth!!.text.toString()
+            var cost = edittextCost!!.text.toString()
+            model!!.cost = cost
+            model!!.cloth = cloth
+            fragmentClothitemBinding.clothModel = model
+            saveCurrentChanges(cloth,cost.toInt())
+        }
+    }
+
+    private fun setOnClickListenerOrder(fragmentClothitemBinding: FragmentClothItemBinding)
+    {
+        btnOrder!!.setOnClickListener {
+            var count = edittextCount!!.text.toString()
+            var sum = count.toInt() + model!!.orderCount.toInt()
+            setNewOrder(sum.toString())
+            model!!.orderCount = sum.toString()
+            fragmentClothitemBinding.clothModel = model
+        }
     }
 
 }

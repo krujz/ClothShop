@@ -27,16 +27,14 @@ class HomeFragment : Fragment() {
     private var isIninventories : MutableList<String>? = mutableListOf()
     private var imageID : MutableList<Int> ? = mutableListOf()
     private val stocks : MutableList<Int?> = mutableListOf()
-    private val orderCounts : MutableList<Int?> = mutableListOf()
-
+    private val orderCounts : MutableList<Int>? = mutableListOf()
     private var controllerCloth : ControllerCloth? = null
-
     private var currenctcloth : ClothModel? = null
     private lateinit  var listener: onClothSelected
 
     init
     {
-        this.controllerCloth = ControllerCloth(ClothRepository.getInstace()!!)
+        this.controllerCloth = ControllerCloth.getInstace()
         this.listofCloths = controllerCloth!!.getListOfCloths()
     }
 
@@ -84,22 +82,29 @@ class HomeFragment : Fragment() {
             isIninventories!!.add(listofCloths!![i].getIsInInventory()!!)
             imageID!!.add(typedArray.getResourceId(controllerCloth!!.getImageIdFromType(types!![i])!!, 0))
             stocks.add(listofCloths!![i].getStock())
-            orderCounts.add(listofCloths!![i].getOrderCount())
+            orderCounts!!.add(listofCloths!![i].getOrderCount()!!)
             i++
         }
 
         typedArray.recycle()
     }
 
+
     private fun afterChangeCheckout()
     {
         var id = controllerCloth!!.onChangeid
+
         if (id != null && cloths!!.size >= id)
         {
-            cloths!![id] = listofCloths!![id].getCloth()!!
-            costs!![id] = listofCloths!![id].getCost()!!.toString()
+            var changedcloth = listofCloths!!.first { x -> id == x.getId() }
+            var i = listofCloths!!.indexOf(changedcloth)
+            cloths!![i] = listofCloths!![i].getCloth()!!
+            costs!![i] = listofCloths!![i].getCost()!!.toString()
+            orderCounts!![i] = listofCloths!![i].getOrderCount()!!
         }
     }
+
+
 
 
     internal inner class ClothsAdapter(context: Context?) : RecyclerView.Adapter<ViewHolder>()
@@ -116,7 +121,7 @@ class HomeFragment : Fragment() {
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int)
         {
             val cloth = ClothModel(ids!![position], cloths!![position],types!![position],costs!![position],timesOfBoughts!![position],
-                isIninventories!![position],imageID!![position],stocks[position].toString(),orderCounts[position].toString())
+                isIninventories!![position],imageID!![position],stocks[position].toString(),orderCounts!![position].toString())
 
             viewHolder.setData(cloth)
             viewHolder.itemView.setOnClickListener{ listener.onClothSelected(cloth) }
