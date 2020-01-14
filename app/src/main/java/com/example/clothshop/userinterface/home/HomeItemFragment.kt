@@ -64,6 +64,7 @@ class HomeItemFragment : Fragment()
 
         return fragmentClothitemBinding.root
     }
+
     private fun saveCurrentChanges(cloth : String?, cost : Int?)
     {
         var id = model!!.id.toInt()

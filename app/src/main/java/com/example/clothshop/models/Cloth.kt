@@ -1,5 +1,6 @@
 package com.example.clothshop.models
 
+import androidx.databinding.Bindable
 import com.example.clothshop.utilities.ClothType
 
 class Cloth(id : Int?, cloth: String?, type: ClothType?, cost: Int?, timesOfBought : Int?, isInInventory: Boolean?, stock : Int?, orderCount : Int?)
@@ -44,4 +45,6 @@ class Cloth(id : Int?, cloth: String?, type: ClothType?, cost: Int?, timesOfBoug
     fun getTimesOfBought(): Int? {return this.timesOfBought}
     fun getIsInInventory(): String? { return if (this.isInInventory!!) {"Raktáron"} else {"Nincs raktáron"}}
     fun getImageID() : Int? {return this.imageID}
+
+
 }

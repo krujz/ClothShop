@@ -19,9 +19,6 @@ import com.example.clothshop.userinterface.complaintlist.ComplaintListFragment
 import com.example.clothshop.userinterface.home.HomeFragment
 import com.example.clothshop.userinterface.home.HomeItemFragment
 import com.example.clothshop.userinterface.complaint.ComplaintFragment
-import com.example.clothshop.userinterface.delete.DeleteFragment
-import com.example.clothshop.userinterface.income.IncomeFragment
-import com.example.clothshop.userinterface.forgotpassword.ToolsFragment
 import com.example.clothshop.userinterface.home.onClothSelected
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -48,11 +45,6 @@ class MainActivity : AppCompatActivity(), onClothSelected,NavigationView.OnNavig
 
         setToolbar("CLOTHS")
 
-        val fab: FloatingActionButton = this.findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Új reklamáció feljegyzése", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -61,9 +53,6 @@ class MainActivity : AppCompatActivity(), onClothSelected,NavigationView.OnNavig
             setOf(
                 R.id.nav_home,
                 R.id.nav_gallery,
-                R.id.nav_slideshow,
-                R.id.nav_tools,
-                R.id.nav_share,
                 R.id.nav_send
             ), drawerLayout
         )
@@ -102,33 +91,6 @@ class MainActivity : AppCompatActivity(), onClothSelected,NavigationView.OnNavig
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.contentmain, ComplaintListFragment.newInstance(), "COMPLAINTS")
-                    .commit()
-
-            }
-            R.id.nav_slideshow ->
-            {
-                setToolbar("INCOME")
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.contentmain, IncomeFragment.newInstance(), "SLIDESHOW")
-                    .commit()
-
-            }
-            R.id.nav_tools ->
-            {
-                setToolbar("TOOLS")
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.contentmain, ToolsFragment.newInstance(), "TOOLS")
-                    .commit()
-
-            }
-            R.id.nav_share ->
-            {
-                setToolbar("DELETE")
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.contentmain, DeleteFragment.newInstance(), "SHARE")
                     .commit()
 
             }
