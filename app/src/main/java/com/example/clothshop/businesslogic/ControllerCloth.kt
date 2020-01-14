@@ -78,6 +78,11 @@ class ControllerCloth(clothRepository: ClothRepository) : ControllerBase() {
         finally {clothRepository!!.dispose()}
     }
 
+    fun calculateIncome(cost : Int, orderCount : Int) : Int
+    {
+        return cost*orderCount
+    }
+
 
     fun getImageIdFromType(clothtype : ClothType?) : Int?
     {

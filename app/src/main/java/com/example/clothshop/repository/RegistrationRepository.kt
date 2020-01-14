@@ -12,6 +12,10 @@ class RegistrationRepository :Database()
             runDatabseUpload(querry!!)
             true
         }
-        catch (e : Exception){false}
+        catch (e : Exception)
+        {
+            MessageBox(e.message!!)
+            false
+        }
     }
 }

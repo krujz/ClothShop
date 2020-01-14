@@ -15,7 +15,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.clothshop.R
 import com.example.clothshop.models.ClothModel
-import com.example.clothshop.userinterface.order.OrderFragment
+import com.example.clothshop.userinterface.complaintlist.ComplaintListFragment
 import com.example.clothshop.userinterface.home.HomeFragment
 import com.example.clothshop.userinterface.home.HomeItemFragment
 import com.example.clothshop.userinterface.complaint.ComplaintFragment
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), onClothSelected,NavigationView.OnNavig
 
         val fab: FloatingActionButton = this.findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Új reklamáció feljegyzése", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -98,10 +98,10 @@ class MainActivity : AppCompatActivity(), onClothSelected,NavigationView.OnNavig
             }
             R.id.nav_gallery ->
             {
-                setToolbar("ORDER")
+                setToolbar("COMPLAINTS")
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.contentmain, OrderFragment.newInstance(), "GALLERY")
+                    .replace(R.id.contentmain, ComplaintListFragment.newInstance(), "COMPLAINTS")
                     .commit()
 
             }
@@ -170,4 +170,5 @@ class MainActivity : AppCompatActivity(), onClothSelected,NavigationView.OnNavig
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
+
 }

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothshop.businesslogic.ControllerCloth
-import com.example.clothshop.repository.ClothRepository
 import com.example.clothshop.utilities.ClothType
 import com.example.clothshop.databinding.RecyclerItemClothModelBinding
 import com.example.clothshop.models.Cloth
@@ -112,8 +111,8 @@ class HomeFragment : Fragment() {
         private val layoutinflater = LayoutInflater.from(context)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
         {
-            val recyclerDogModelBinding = RecyclerItemClothModelBinding.inflate(layoutinflater, parent, false)
-            return ViewHolder(recyclerDogModelBinding.root, recyclerDogModelBinding)
+            val recyclerClothModelBinding = RecyclerItemClothModelBinding.inflate(layoutinflater, parent, false)
+            return ViewHolder(recyclerClothModelBinding.root, recyclerClothModelBinding)
         }
 
         override fun getItemCount(): Int {return cloths!!.size }

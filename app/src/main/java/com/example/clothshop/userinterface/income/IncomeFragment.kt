@@ -29,7 +29,7 @@ class IncomeFragment : Fragment() {
     ): View? {
         incomeViewModel =
             ViewModelProviders.of(this).get(IncomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
+        val root = inflater.inflate(R.layout.fragment_income, container, false)
         val textView: TextView = root.findViewById(R.id.text_slideshow)
         incomeViewModel.text.observe(this, Observer {
             textView.text = it

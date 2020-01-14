@@ -70,4 +70,7 @@ dependencies {
 
     implementation 'com.hudomju:swipe-to-dismiss-undo:1.0'
 
+    //AutofitTextview
+    implementation 'me.grantland:autofittextview:0.2.+'
+
 }

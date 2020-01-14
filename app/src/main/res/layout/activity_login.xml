@@ -77,14 +77,6 @@
             android:text="aa"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:gravity="right"
-            android:text="Forgot password ?"
-            android:textColor="@color/white" />
-
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
