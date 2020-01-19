@@ -103,9 +103,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-
-
     internal inner class ClothsAdapter(context: Context?) : RecyclerView.Adapter<ViewHolder>()
     {
         private val layoutinflater = LayoutInflater.from(context)
